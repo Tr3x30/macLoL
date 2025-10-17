@@ -1,0 +1,86 @@
+body, html {
+  margin: 0;
+  min-height: 2000px;
+  min-width: 2000px;
+  background-color: rgba(0, 0, 0, 0);
+  background-image: url("image.png");
+  background-size: 1920px 1080px;
+  background-repeat: no-repeat;
+}
+
+/* Clipped image style */
+.clip-svg {
+  width: 1920px;
+  height: 1080px;
+  object-fit: cover;
+  clip-path: url(#myClip);
+}
+
+/* coordinate display */
+#coords {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 14px;
+  background: rgba(0,0,0,0.4);
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* Player card and patch text */
+.player-card {
+  position: absolute;
+  top: 965px;
+  left: 83px;
+  height: 112px;
+  width: 221px;
+  object-fit: cover;
+  object-position: center right;
+  z-index: 5;
+}
+
+.patch-text {
+  position: absolute;
+  top: 995px;
+  left: 8px;
+  color: #F2EAED;
+  font-size: 28px;
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  text-align: center;
+  line-height: 0.9;
+  z-index: 10;
+}
+
+/* Overlay bars and text */
+.overlay-text {
+  position: absolute;
+  top: 0;
+  color: #F2EAED;
+  font-size: 28px;
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.left-text {
+  left: 350px;
+  text-align: right;
+  transform: translate(-100%);
+  top: 1px;
+}
+
+.right-text {
+  left: 1580px;
+  text-align: left;
+}
+
+svg.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10;
+}

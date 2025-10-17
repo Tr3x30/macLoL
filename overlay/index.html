@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clipped Overlay Windows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<img src="maroon_background.jpg" alt="Overlay" class="clip-svg">
+
+<!-- SVG defining clipping shapes -->
+<svg width="0" height="0">
+  <defs>
+    <clipPath id="myClip">
+      <rect x="3" y="965" width="300" height="112" rx="3" ry="3"/>
+      <rect x="610" y="783" width="715" height="64" rx="3" ry="3"/>
+      <rect x="1642" y="802" width="278" height="15"/>
+      <rect x="1642" y="1070" width="278" height="10"/>
+      <rect x="1642" y="817" width="15" height="253"/>
+      <rect x="1910" y="812" width="10" height="258"/>
+    </clipPath>
+  </defs>
+</svg>
+
+<!-- coordinate display -->
+<div id="coords">X: 0, Y: 0</div>
+
+<div>
+  <img src="mac_esports.jpg" alt="" class="player-card">
+  <div class="patch-text">PATCH<br>25.20</div>
+</div>
+
+<div>
+  <svg class="overlay" width="1920" height="500">
+    <defs>
+      <mask id="circleCutout">
+        <rect x="0" y="0" width="1920" height="500" fill="white"/>
+        <circle cx="50" cy="40" r="21" fill="black"/> <!-- blue cutout -->
+        <circle cx="1885" cy="40" r="21" fill="black"/> <!-- red cutout -->
+      </mask>
+    </defs>
+
+    <!-- Main bars -->
+    <rect x="50" y="0" width="345" height="41" fill="blue" mask="url(#circleCutout)"/>
+    <rect x="1540" y="0" width="345" height="41" fill="red" mask="url(#circleCutout)"/>
+
+    <!-- Vertical win boxes (3 per team) -->
+    <!-- Blue team -->
+    <rect x="365" y="3" width="20" height="10" fill="black"/>
+    <rect x="365" y="15" width="20" height="10" fill="black"/>
+    <rect x="365" y="27" width="20" height="10" fill="black"/>
+
+    <!-- Red team -->
+    <rect x="1550" y="3" width="20" height="10" fill="black"/>
+    <rect x="1550" y="15" width="20" height="10" fill="black"/>
+    <rect x="1550" y="27" width="20" height="10" fill="black"/>
+  </svg>
+
+  <div class="overlay-text left-text">MCMASTER UNIVERSITY</div>
+  <div class="overlay-text right-text">SIMON-FRASER BLACK</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

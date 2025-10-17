@@ -103,16 +103,15 @@ function updateWins(team, count) {
 
 function setBestOf(n) {
   bestOf = n;
-  maxWins = n; // update maxWins dynamically
+  maxWins = Math.ceil(n / 2);
   console.log(`Set to best of ${n}`);
-
+  console.log(maxWins);
   const blueWins = document.querySelectorAll('.blue-team .win');
   const redWins = document.querySelectorAll('.red-team .win');
 
-  blueWins.forEach((el, i) => el.style.display = i < maxWins ? 'block' : 'none');
-  redWins.forEach((el, i) => el.style.display = i < maxWins ? 'block' : 'none');
+  blueWins.forEach((el, i) => el.style.display = (n === 3 ? i < 2 : i < 3) ? 'block' : 'none');
+  redWins.forEach((el, i) => el.style.display = (n === 3 ? i < 2 : i < 3) ? 'block' : 'none');
 
-  // Reset wins if they exceed the new max
   if (blueWinsCount > maxWins) blueWinsCount = maxWins;
   if (redWinsCount > maxWins) redWinsCount = maxWins;
 

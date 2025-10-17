@@ -1,12 +1,14 @@
-body, html {
-  margin: 0;
-  min-height: 2000px;
-  min-width: 2000px;
-  background-color: rgba(0, 0, 0, 0);
+body {
+  background-color: transparent;
   background-image: url("image.png");
   background-size: 1920px 1080px;
   background-repeat: no-repeat;
 }
+
+body.no-bg {
+  background: transparent !important; /* completely remove the background */
+}
+
 
 /* Clipped image style */
 .clip-svg {
@@ -75,6 +77,7 @@ body, html {
 .right-text {
   left: 1580px;
   text-align: left;
+  white-space: nowrap;  /* prevents wrapping */
 }
 
 svg.overlay {

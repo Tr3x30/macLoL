@@ -1,5 +1,11 @@
 const body = document.body;
 
+const bar = document.getElementById('scoreboard-bar');
+if (bar) {
+  bar.dataset.origWidth = bar.getAttribute('width');
+  bar.dataset.origHeight = bar.getAttribute('height');
+}
+
 // Track whether background is visible
 let bgVisible = true;
 
@@ -53,11 +59,44 @@ document.addEventListener('keydown', e => {
       e.preventDefault();
       setBestOf(parseInt(e.key));
       break;
+    
+    case 'h':
+      e.preventDefault();
+
+    const bar = document.getElementById('scoreboard-bar');
+    if (!bar) return;
+
+    // Toggle visibility
+    if (!bar.dataset.hidden) {
+      bar.dataset.hidden = 'true';
+      bar.setAttribute('width', 0);
+      bar.setAttribute('height', 0);
+      console.log('Scoreboard bar hidden');
+    } else {
+      bar.dataset.hidden = '';
+      bar.setAttribute('width', bar.dataset.origWidth);
+      bar.setAttribute('height', bar.dataset.origHeight);
+      console.log('Scoreboard bar shown');
+    }
+
+        // Toggle the overlay text
+    const barText = document.getElementById('bar-text');
+    if (barText) {
+      if (!barText.dataset.hidden) {
+        barText.dataset.hidden = 'true';
+        barText.style.display = 'none';
+        console.log('Bar text hidden');
+      } else {
+        barText.dataset.hidden = '';
+        barText.style.display = 'flex';
+        console.log('Bar text shown');
+      }
+    }
   }
 });
 
 function toggleEditMode(on) {
-  const editable = document.querySelectorAll('.team-name, #patch-text');
+  const editable = document.querySelectorAll('.team-name, #patch-text, #bar-text');
   editable.forEach(el => {
     el.contentEditable = on;
     el.style.outline = on ? '1px dashed yellow' : 'none';

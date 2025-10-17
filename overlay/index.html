@@ -14,18 +14,21 @@
 <img src="maroon_background.jpg" alt="Overlay" class="clip-svg">
 
 <!-- SVG defining clipping shapes -->
-<svg width="0" height="0">
-  <defs>
-    <clipPath id="myClip">
-      <rect x="3" y="965" width="300" height="112" rx="3" ry="3"/>
-      <rect x="610" y="783" width="715" height="64" rx="3" ry="3"/>
-      <rect x="1642" y="802" width="278" height="15"/>
-      <rect x="1642" y="1070" width="278" height="10"/>
-      <rect x="1642" y="817" width="15" height="253"/>
-      <rect x="1910" y="812" width="10" height="258"/>
-    </clipPath>
-  </defs>
-</svg>
+<div>
+  <svg width="0" height="0">
+    <defs>
+      <clipPath id="myClip">
+        <rect x="3" y="965" width="300" height="112" rx="3" ry="3"/>
+        <rect id="scoreboard-bar" x="610" y="783" width="715" height="64" rx="3" ry="3"/>
+        <rect x="1642" y="802" width="278" height="15"/>
+        <rect x="1642" y="1070" width="278" height="10"/>
+        <rect x="1642" y="817" width="15" height="253"/>
+        <rect x="1910" y="812" width="10" height="258"/>
+      </clipPath>
+    </defs>
+  </svg>
+  <div id="bar-text">CLOL GROUP STAGE - ROUND 1</div>
+</div>
 
 <div>
   <img src="mac_esports.jpg" alt="" class="player-card">
@@ -51,7 +54,7 @@
           <circle cx="0" cy="41" r="21" fill="black"/>
         </mask>
       </defs>
-      <rect x="0" y="0" width="350" height="41" fill="blue" mask="url(#blueMask)"/>
+      <rect x="0" y="0" width="350" height="41" fill="#245FC5" mask="url(#blueMask)"/>
     </svg>
   </div>
 
@@ -69,12 +72,10 @@
           <circle cx="350" cy="41" r="21" fill="black"/>
         </mask>
       </defs>
-      <rect x="0" y="0" width="350" height="41" fill="red" mask="url(#redMask)"/>
+      <rect x="0" y="0" width="350" height="41" fill="#BE2038" mask="url(#redMask)"/>
     </svg>
   </div>
 </div>
-
-
 <script src="script.js"></script>
 </body>
 </html>

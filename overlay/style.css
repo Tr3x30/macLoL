@@ -7,7 +7,8 @@ body {
 }
 
 body.no-bg {
-  background: transparent !important; /* completely remove the background */
+  background: transparent !important;
+  /* completely remove the background */
 }
 
 
@@ -27,7 +28,7 @@ body.no-bg {
   color: white;
   font-family: sans-serif;
   font-size: 14px;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   padding: 4px 6px;
   border-radius: 4px;
 }
@@ -68,23 +69,85 @@ body.no-bg {
   z-index: 10;
 }
 
-.left-text {
-  left: 350px;
-  text-align: right;
-  transform: translate(-100%);
-  top: 1px;
-}
-
-.right-text {
-  left: 1580px;
-  text-align: left;
-  white-space: nowrap;  /* prevents wrapping */
-}
-
 svg.overlay {
   position: absolute;
   top: 0;
   left: 0;
   pointer-events: none;
   z-index: 10;
+}
+
+/* Team Boxes */
+.top-bar {
+  width: 1920px;
+  height: 41px;
+  position: absolute;
+  top: 0;
+  left: 960px;
+  transform: translateX(-50%);
+}
+
+.blue-team {
+  width: 350px;
+  height: 41px;
+  position: absolute;
+  transform: translateX(-100%);
+  left: calc(50% - 565px);
+
+  display: flex;
+  align-items: center;
+}
+
+.wins {
+  position: absolute; /* position relative to red-team */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.blue-team .wins {
+  right: 5px;          /* 5px from the left edge */
+}
+
+.red-team {
+  width: 350px;
+  height: 41px;
+  position: absolute;
+  right: calc(50% - 578px);
+  transform: translateX(100%);
+  
+  display: flex;
+  align-items: center; /* vertical centering */
+}
+
+.red-team .wins {
+left: 5px;          /* 5px from the left edge */
+}
+
+.team-name {
+  color: #F2EAED;
+  font-family: 'Teko', sans-serif;
+  font-weight: bold;
+  font-size: 28px;
+  white-space: nowrap;
+  z-index: 20;
+  
+  position: absolute; /* position relative to parent team div */
+  top: 50%;           /* start at vertical center */
+  transform: translateY(-50%); /* perfect vertical centering */
+}
+
+.blue-team .team-name {
+  right: 35px; /* 50px offset from center (right edge of blue bar) */
+}
+
+.red-team .team-name {
+  left: 35px; /* 50px offset from center (left edge of red bar) */
+}
+
+.win {
+  width: 20px;
+  height: 8px;
+  background-color: black;
+  z-index: 15;
 }

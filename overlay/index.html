@@ -32,38 +32,51 @@
 
 <div>
   <img src="mac_esports.jpg" alt="" class="player-card">
-  <div class="patch-text">PATCH<br>25.20</div>
+  <div id="patch-text" class="patch-text">PATCH<br>25.20</div>
 </div>
 
 <div>
-  <svg class="overlay" width="1920" height="500">
-    <defs>
-      <mask id="circleCutout">
-        <rect x="0" y="0" width="1920" height="500" fill="white"/>
-        <circle cx="50" cy="40" r="21" fill="black"/> <!-- blue cutout -->
-        <circle cx="1885" cy="40" r="21" fill="black"/> <!-- red cutout -->
-      </mask>
-    </defs>
+  
 
-    <!-- Main bars -->
-    <rect x="50" y="0" width="345" height="41" fill="blue" mask="url(#circleCutout)"/>
-    <rect x="1539" y="0" width="345" height="41" fill="red" mask="url(#circleCutout)"/>
+<div class="top-bar">
+  <div class="blue-team">
+    <div class="team-name">MCMASTER UNIVERSITY</div>
+    <div class="wins">
+      <div class="win"></div>
+      <div class="win"></div>
+      <div class="win"></div>
+    </div>
 
-    <!-- Vertical win boxes (3 per team) -->
-    <!-- Blue team -->
-    <rect x="365" y="3" width="20" height="10" fill="black"/>
-    <rect x="365" y="15" width="20" height="10" fill="black"/>
-    <rect x="365" y="27" width="20" height="10" fill="black"/>
+    <svg class="overlay" width="350" height="41"> 
+      <defs>
+        <mask id="blueMask">
+          <rect x="0" y="0" width="350" height="41" fill="white"/>
+          <circle cx="0" cy="41" r="21" fill="black"/>
+        </mask>
+      </defs>
+      <rect x="0" y="0" width="350" height="41" fill="blue" mask="url(#blueMask)"/>
+    </svg>
+  </div>
 
-    <!-- Red team -->
-    <rect x="1550" y="3" width="20" height="10" fill="black"/>
-    <rect x="1550" y="15" width="20" height="10" fill="black"/>
-    <rect x="1550" y="27" width="20" height="10" fill="black"/>
-  </svg>
-
-  <div class="overlay-text left-text">MCMASTER UNIVERSITY</div>
-  <div class="overlay-text right-text">SIMON-FRASER BLACK</div>
+  <div class="red-team">
+    <div class="team-name">UNIVERSITY OF TORONTO</div>
+    <div class="wins">
+      <div class="win"></div>
+      <div class="win"></div>
+      <div class="win"></div>
+    </div>
+    <svg class="overlay" width="350" height="41"> 
+      <defs>
+        <mask id="redMask">
+          <rect x="0" y="0" width="350" height="41" fill="white"/>
+          <circle cx="350" cy="41" r="21" fill="black"/>
+        </mask>
+      </defs>
+      <rect x="0" y="0" width="350" height="41" fill="red" mask="url(#redMask)"/>
+    </svg>
+  </div>
 </div>
+
 
 <script src="script.js"></script>
 </body>

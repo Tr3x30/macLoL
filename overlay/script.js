@@ -1,15 +1,7 @@
-const coords = document.getElementById('coords');
 const body = document.body;
 
 // Track whether background is visible
 let bgVisible = true;
-
-// Mouse coordinates display
-document.addEventListener('mousemove', e => {
-  const x = e.pageX;
-  const y = e.pageY;
-  coords.textContent = `X: ${x}, Y: ${y}`;
-});
 
 // Toggle background on pressing 'b' or 'B'
 document.addEventListener('keydown', e => {
@@ -59,7 +51,7 @@ document.addEventListener('keydown', e => {
     case '3': // set best-of 3
     case '5': // set best-of 5
       e.preventDefault();
-      if (editMode) setBestOf(parseInt(e.key));
+      setBestOf(parseInt(e.key));
       break;
   }
 });

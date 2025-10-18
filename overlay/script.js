@@ -7,7 +7,7 @@ if (bar) {
 }
 
 // Track whether background is visible
-let bgVisible = true;
+let bgVisible = false;
 
 // Toggle background on pressing 'b' or 'B'
 document.addEventListener('keydown', e => {

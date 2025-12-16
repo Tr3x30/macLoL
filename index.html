@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Clipped Overlay Windows</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+<script src="script.js"></script>
+
+<body>
+  <div class="container">
+    <div class="content-pane">
+      <div id="content-grid" class="content-block-grid">
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+        <div class="content-block"></div>
+      </div>
+
+      <div id="page-menu" class="page-panel">
+        <div class="menu-text active">PROJECTS</div>
+        <div class="menu-text">ABOUT</div>
+        <div class="menu-text">HOME</div>
+        <div class="menu-text">TEMP</div>
+      </div>
+    </div>
+
+    <div class="menu-bar">      
+      <svg id="menu-bar-background" width="100%" top="0" left="50px" >
+        <path id="menu-path" d="M 0 0
+        l 640 0
+        c 100 0, 100 180, 200 180
+        l 640 0
+        c 100 0, 100 -180, 200 -180
+        l 640 0
+        l 0 360
+        L 0 360 z" stroke="none" fill="blue"/>
+      </svg>
+
+      <div id="content-info" class="page-info-div">
+        <!-- visible title (JS updates this) -->
+        <div id="menu-title" class="page-info-text visible">PROJECTS</div>
+
+        <!-- sizing ghosts (static, invisible, never updated) -->
+        <div class="page-info-text ghost">PROJECTS</div>
+        <div class="page-info-text ghost">ABOUT</div>
+        <div class="page-info-text ghost">HOME</div>
+        <div class="page-info-text ghost">TEMP</div>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

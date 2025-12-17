@@ -75,21 +75,21 @@ body, html {
   width: 100vw;
 }
 
-  .content-block-grid {
-    position: absolute;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 1fr;
-    gap: 1vw;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: top 0.25s ease;
+.content-block-grid {
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 1vw;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: top 0.25s ease;
 
-    justify-content: center;  /* centers grid horizontally */
+  justify-content: center;  /* centers grid horizontally */
 
-    top: 5%;
-    width: 66%;
-  }
+  top: 5%;
+  width: 66%;
+}
 
 .content-block {
   background: antiquewhite;
@@ -104,27 +104,22 @@ body, html {
 
 /* Overlay container */
 .card-overlay {
-  position: fixed;
-  inset: 0;
+  position: fixed;      /* viewport-based */
+  inset: 0;             /* top:0; right:0; bottom:0; left:0 */
   z-index: 2000;
-  background: rgba(0, 0, 0, 0.35);
+  background: transparent;  /* no fade, just transparent */
   display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-/* Expanded card (clone) */
+/* Cloned card directly on top of original */
 .card-overlay .content-block {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  height: 80vh;
-  aspect-ratio: 4 / 3;
-  width: auto;
-  max-width: 80vw;
-
-  background: antiquewhite;
-  border-radius: 16px;
+  position: fixed;      /* position relative to viewport */
+  background-color: #ffd580;  /* different color from original */
+  border-radius: 1vw;
+  z-index: 100;        /* above overlay */
+  padding: 0;
 }
 
 

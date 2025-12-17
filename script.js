@@ -99,37 +99,94 @@ document.addEventListener('DOMContentLoaded', () => {
   grid.addEventListener('click', (e) => {
     const card = e.target.closest('.content-block');
     if (!card) return;
-    scrollLocked = true;
-    openCard(card);
+
+    openCardClone(card);
   });
 
-  function openCard(card) {
-    // Create overlay
+  function closeCardClone(overlay, clone) {
+    // Animate back to original position
+    const rect = clone._originRect;
+
+    overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    clone.style.top = `${rect.top}px`;
+    clone.style.left = `${rect.left}px`;
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
+
+    setTimeout(() => {
+      overlay.remove();
+      scrollLocked = false;
+    }, 500);
+  }
+
+  function openCardClone(originalCard) {
+    scrollLocked = true;
+
+    /* ---------- OVERLAY ---------- */
     const overlay = document.createElement('div');
     overlay.className = 'card-overlay';
-
-    // Clone card
-    const clone = card.cloneNode(true);
-
-    overlay.appendChild(clone);
+    overlay.style.backgroundColor = 'rgba(0,0,0,0)';
+    overlay.style.transition = 'background-color 0.5s ease';
     document.body.appendChild(overlay);
 
-    // Close on click outside
+    /* ---------- CLONE ---------- */
+    const clone = originalCard.cloneNode(true);
+    clone.style.position = 'fixed';
+    clone.style.margin = '0';
+    clone.style.transition = 'top 0.5s ease, left 0.5s ease, width 0.5s ease, height 0.5s ease';
+    clone.style.backgroundColor = '#ffd580';
+    clone.style.zIndex = '2100';
+
+    const rect = originalCard.getBoundingClientRect();
+    clone._originRect = rect;
+
+    // Start exactly on top of original
+    clone.style.top = `${rect.top}px`;
+    clone.style.left = `${rect.left}px`;
+    clone.style.width = `${rect.width}px`;
+    clone.style.height = `${rect.height}px`;
+
+    overlay.appendChild(clone);
+
+    /* ---------- TARGET SIZE MATH ---------- */
+    const vh = window.innerHeight;
+    const vw = window.innerWidth;
+
+    let targetHeight = 0.8 * vh;
+    let targetWidth = (4 / 3) * targetHeight;
+
+    const maxWidth = 0.8 * vw;
+    if (targetWidth > maxWidth) {
+      targetWidth = maxWidth;
+      targetHeight = targetWidth * (3 / 4);
+    }
+
+    const targetTop = (vh - targetHeight) / 2;
+    const targetLeft = (vw - targetWidth) / 2;
+
+    /* ---------- TRIGGER ANIMATION ---------- */
+    requestAnimationFrame(() => {
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.5)';
+      clone.style.top = `${targetTop}px`;
+      clone.style.left = `${targetLeft}px`;
+      clone.style.width = `${targetWidth}px`;
+      clone.style.height = `${targetHeight}px`;
+    });
+
+    /* ---------- CLOSE HANDLERS ---------- */
     overlay.addEventListener('click', (e) => {
       if (e.target === overlay) {
-        overlay.remove();
-        scrollLocked = false;
+        closeCardClone(overlay, clone);
       }
     });
 
-    // ESC to close
-    document.addEventListener('keydown', function esc(e) {
+    function escHandler(e) {
       if (e.key === 'Escape') {
-        scrollLocked = false;
-        overlay.remove();
-        document.removeEventListener('keydown', esc);
+        closeCardClone(overlay, clone);
+        document.removeEventListener('keydown', escHandler);
       }
-    });
+    }
+    document.addEventListener('keydown', escHandler);
   }
 });
 

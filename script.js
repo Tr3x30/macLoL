@@ -93,6 +93,47 @@ function goToIndex(index) {
 }
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.querySelector('.content-block-grid');
+
+  grid.addEventListener('click', (e) => {
+    const card = e.target.closest('.content-block');
+    if (!card) return;
+    scrollLocked = true;
+    openCard(card);
+  });
+
+  function openCard(card) {
+    // Create overlay
+    const overlay = document.createElement('div');
+    overlay.className = 'card-overlay';
+
+    // Clone card
+    const clone = card.cloneNode(true);
+
+    overlay.appendChild(clone);
+    document.body.appendChild(overlay);
+
+    // Close on click outside
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        overlay.remove();
+        scrollLocked = false;
+      }
+    });
+
+    // ESC to close
+    document.addEventListener('keydown', function esc(e) {
+      if (e.key === 'Escape') {
+        scrollLocked = false;
+        overlay.remove();
+        document.removeEventListener('keydown', esc);
+      }
+    });
+  }
+});
+
+
 window.addEventListener('wheel', (e) => {
     e.preventDefault();
 
@@ -119,8 +160,6 @@ window.addEventListener('wheel', (e) => {
     }, SCROLL_LOCK_TIME);
 
 }, { passive: false });
-
-
 
 
 window.addEventListener('resize', () => {

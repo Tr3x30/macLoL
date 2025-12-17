@@ -75,32 +75,63 @@ body, html {
   width: 100vw;
 }
 
-.content-block-grid {
-  position: absolute;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 1fr;
-  gap: 1vw;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: top 0.25s ease;
+  .content-block-grid {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1vw;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: top 0.25s ease;
 
-  justify-content: center;  /* centers grid horizontally */
+    justify-content: center;  /* centers grid horizontally */
 
-  top: 5%;
-  width: 66%;
-}
+    top: 5%;
+    width: 66%;
+  }
 
 .content-block {
-  background-color: antiquewhite;
+  background: antiquewhite;
   border-radius: 1vw;
-  aspect-ratio: 4/3;
+  aspect-ratio: 4 / 3;
+  padding: 1rem;
+  cursor: pointer;
+  transition: 
+    transform 0.35s ease,
+    border-radius 0.35s ease;
 }
+
+/* Overlay container */
+.card-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+}
+
+/* Expanded card (clone) */
+.card-overlay .content-block {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  height: 80vh;
+  aspect-ratio: 4 / 3;
+  width: auto;
+  max-width: 80vw;
+
+  background: antiquewhite;
+  border-radius: 16px;
+}
+
 
 .page-panel {
   position: relative;
   top: 50%;
-  right: 10%;
+  left: 90%;
   transform: translate(-50%,-50%);
   height: 33vh;
   width: fit-content;
@@ -111,18 +142,31 @@ body, html {
 }
 
 .menu-text {
+  position: relative;
   color: #777;
   font-weight: 500;
   width: fit-content;
-  transition: color 0.25s ease, font-weight 0.25s ease;
-  cursor: pointer;
   padding: 0.5em;
+  cursor: pointer;
+  transition: color 0.25s ease, font-weight 0.25s ease;
+}
+
+/* invisible bold width reserver */
+.menu-text::after {
+  content: attr(data-text);
+  font-weight: 700;
+  visibility: hidden;
+  white-space: nowrap;
+  display: block;
+  height: 0;
+  overflow: hidden;
 }
 
 .menu-text.active {
   color: #222;
   font-weight: 700;
 }
+
 
 .menu-text:hover:not(.active) {
   color: #333;
